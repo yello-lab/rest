@@ -2,16 +2,7 @@
     "use strict";
     var windowOn = $(window);
 
-    /*-----------------------------------------------------------------------------------
-        Template Name: Delish – Restaurant & Cafe Bootstrap HTML5 Template
-        Author: RRDevs
-        Support: https://support.rrdevs.net
-        Description: Delish – Restaurant & Cafe Bootstrap HTML5 Template.
-        Version: 1.0
-        Developer: Sabbir Ahmmed (https://github.com/ahmmedsabbirbd)
-    -----------------------------------------------------------------------------------
-
-     */
+    
    /*======================================
    Data Css js
    ========================================*/
@@ -432,39 +423,7 @@
         lastNobullet();
     });
 
-    function handleQuantityButtons() {
-        $('.product__quantity__group .minus').click(function() {
-            var input = $(this).closest('.product__quantity__group').find('input.qty');
-            var currentValue = parseInt(input.val());
-            if (currentValue > 1) {
-                input.val(currentValue - 1).change();
-            }
-        });
-
-        $('.product__quantity__group .plus').click(function() {
-            var input = $(this).closest('.product__quantity__group').find('input.qty');
-            var currentValue = parseInt(input.val());
-            input.val(currentValue + 1).change();
-        });
-    }
-
-    handleQuantityButtons();
-
-    function handleServiceQuantityButtons() {
-        $('.shop-details__quantity-group .minus').click(function() {
-            var input = $(this).closest('.shop-details__quantity-group').find('input.qty');
-            var currentValue = parseInt(input.val());
-            if (currentValue > 1) {
-                input.val(currentValue - 1).change();
-            }
-        });
-        $('.shop-details__quantity-group .plus').click(function() {
-            var input = $(this).closest('.shop-details__quantity-group').find('input.qty');
-            var currentValue = parseInt(input.val());
-            input.val(currentValue + 1).change();
-        });
-    }
-    handleServiceQuantityButtons();
+   
 
     $('#showlogin').on('click', function () {
         $('#checkout-login').slideToggle(400);

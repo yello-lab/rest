@@ -43,5 +43,45 @@ document.addEventListener("DOMContentLoaded", () => {
     updatePrice();
 
     // Listen for quantity input changes
-    inputElement.addEventListener("input", updatePrice);
+    inputElement.addEventListener("change", updatePrice);    
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    let quantityInput = document.querySelector(".input-text.qty"); // The input field
+    let plusButton = document.querySelector(".plus"); // Plus button
+    let minusButton = document.querySelector(".minus"); // Minus button
+
+    // Function to update the total price
+    function updatePrice() {
+        let foodPrice = parseFloat(localStorage.getItem("foodPrice")) || 0;
+        let quantity = parseInt(quantityInput.value) || 1;
+        let totalPrice = (foodPrice * quantity).toFixed(2);
+
+        document.querySelector(".price").innerText = `₵${totalPrice}`;
+    }
+
+    // Increase quantity when clicking "+"
+    plusButton.addEventListener("click", () => {
+        let currentQuantity = parseInt(quantityInput.value) || 1;
+        let maxQuantity = parseInt(quantityInput.getAttribute("max")) || 100;
+
+        if (currentQuantity < maxQuantity) {
+            quantityInput.value = currentQuantity + 1;
+            updatePrice();
+        }
+    });
+
+    // Decrease quantity when clicking "-"
+    minusButton.addEventListener("click", () => {
+        let currentQuantity = parseInt(quantityInput.value) || 1;
+        let minQuantity = parseInt(quantityInput.getAttribute("min")) || 1;
+
+        if (currentQuantity > minQuantity) {
+            quantityInput.value = currentQuantity - 1;
+            updatePrice();
+        }
+    });
+
+    // Update price when input value changes
+    quantityInput.addEventListener("input", updatePrice);
 });
