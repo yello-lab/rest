@@ -1,4 +1,6 @@
 const order_btn = document.querySelectorAll(".order-btn");
+const order_btn_ = document.querySelectorAll(".order-btn_");
+const order_btn_side = document.querySelectorAll(".order-btn_side");
 let foodName;
 let foodPrice;
 
@@ -85,3 +87,39 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update price when input value changes
     quantityInput.addEventListener("input", updatePrice);
 });
+
+order_btn_.forEach(button => {
+    button.addEventListener("click", () => {
+
+        //parent class
+        const foodMenuItem = button.closest(".reservation-2__item");
+
+        foodName = foodMenuItem.querySelector(".title").getAttribute("data-name");
+        foodPrice = foodMenuItem.querySelector(".price").getAttribute("data-price");
+
+        localStorage.setItem("foodName", foodName);
+        localStorage.setItem("foodPrice", foodPrice);
+    
+        // Redirect to another page
+        window.location.href = 'shop-details.html';
+
+    })
+})
+
+order_btn_side.forEach(button => {
+    button.addEventListener("click", () => {
+
+        //parent class
+        const foodMenuItem = button.closest(".side_list");
+
+        foodName = foodMenuItem.querySelector(".title").getAttribute("data-name");
+        foodPrice = foodMenuItem.querySelector(".price").getAttribute("data-price");
+
+        localStorage.setItem("foodName", foodName);
+        localStorage.setItem("foodPrice", foodPrice);
+    
+        // Redirect to another page
+        window.location.href = 'shop-details.html';
+
+    })
+})
