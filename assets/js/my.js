@@ -102,6 +102,7 @@ order_btn_.forEach(button => {
     
         // Redirect to another page
         window.location.href = 'shop-details.html';
+        
 
     })
 })
@@ -121,5 +122,38 @@ order_btn_side.forEach(button => {
         // Redirect to another page
         window.location.href = 'shop-details.html';
 
+        
+        
+
     })
 })
+
+
+if (window.location.pathname.includes("shop-details.html")) {
+        // Retrieve from localStorage
+        const foodName = localStorage.getItem("foodName");
+        const foodPrice = document.querySelector(".price")
+        const order_button = document.querySelector(".rr-btn-solid");
+        const foodQuantity = document.querySelector(".input-text");
+
+        document.querySelector(".img-fluid").setAttribute("src", `./assets/imgs/shop-details/${foodName}.jpg`);
+
+        
+
+        order_button.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
+
+          
+            // Construct the WhatsApp message with the image URL as a clickable link
+            const message = `Hello, I would like to make the following order:\n\nFood Name: ${foodName}\nQuantity: ${foodQuantity.value}\nPrice: ₵${foodPrice.innerText}\nImage: https://raw.githubusercontent.com/yello-lab/lawgeescloset/refs/heads/main/`;
+
+            // Encode the message for the URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Open WhatsApp with the pre-filled message
+            const whatsappUrl = `https://wa.me/+233549031201?text=${encodedMessage}`;
+            window.open(whatsappUrl, "_blank");
+        })
+    }
+
+
