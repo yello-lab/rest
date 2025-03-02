@@ -49,7 +49,7 @@ class ContactForm {
 }
 
 
-$recipient = "ahmmedsabbirbd@gmail.com";
+$recipient = "ernestkyei101@gmail.com";
 $fromName = "RRDevs";
 $fromEmail = "hellow@rrdevs.net";
 
